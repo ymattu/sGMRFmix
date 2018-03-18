@@ -1,4 +1,4 @@
-# sGMRFmix 0.1.3.9000
+# sGMRFmix 0.2.0
 
 ## New features
 
