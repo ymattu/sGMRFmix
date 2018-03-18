@@ -19,16 +19,17 @@ the data via the sparse mixture model.}
 value should be determined together with the threshold on the
 anomaly score, so the performance of anomaly detection is maximized.}
 
-\item{kmeans}{logical.}
+\item{kmeans}{logical. If TRUE, initialize parameters with k-means method.
+You should set TRUE for non-time series data. Default FALSE.}
 
 \item{m0}{a numeric vector. Location parameter of Gauss-Laplace prior.
-Keep default if no prior information is available.}
+Keep default if no prior information is available. Default 0.}
 
 \item{lambda0}{double. Coefficient for scale parameter of Gauss-Laplace
-prior. Keep default if no prior information is available.}
+prior. Keep default if no prior information is available. Default 1.}
 
 \item{alpha}{double. Concentration parameter of Dirichlet prior.
-Keep default if no prior information is available.}
+Keep default if no prior information is available. Default 1.}
 
 \item{pi_threshold}{double. Threshold to decide a number of states.
 If pi < pi_threshold, the states are rejected in the sense of

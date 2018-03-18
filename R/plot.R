@@ -2,10 +2,10 @@
 #'
 #' @param df data.frame of multivariate data
 #' @param label data.frame of label for each variables. Or vector of label for each observation.
-#' @param order_by vector.
+#' @param order_by vector. An x-axis of plots.
 #' @param guide_title character.
 #' @param fix_scale logical.
-#' @param point_size an integer point size
+#' @param point_size integer. Point size.
 #'
 #' @return ggplot2 object
 #'
@@ -62,6 +62,12 @@ plot_multivariate_data <- function(df, label = NULL, order_by = index(df),
   }
   scales <- ifelse(fix_scale, "fixed", "free_y")
 
+  if (identical(theme_get(), theme_gray())) {
+    ggtheme <- theme_bw
+  } else {
+    ggtheme <- theme_get
+  }
+
   g + facet_wrap(~ variable, ncol = 1L, strip.position = "left", scales = scales) +
-    xlab("") + ylab("") + theme_bw()
+    xlab("") + ylab("") + ggtheme()
 }

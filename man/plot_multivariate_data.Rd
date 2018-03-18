@@ -12,13 +12,13 @@ plot_multivariate_data(df, label = NULL, order_by = index(df),
 
 \item{label}{data.frame of label for each variables. Or vector of label for each observation.}
 
-\item{order_by}{vector.}
+\item{order_by}{vector. An x-axis of plots.}
 
 \item{guide_title}{character.}
 
 \item{fix_scale}{logical.}
 
-\item{point_size}{an integer point size}
+\item{point_size}{integer. Point size.}
 }
 \value{
 ggplot2 object

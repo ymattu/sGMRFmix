@@ -7,13 +7,14 @@
 #' @param rho double. Constant that multiplies the penalty term. An optimal
 #'          value should be determined together with the threshold on the
 #'          anomaly score, so the performance of anomaly detection is maximized.
-#' @param kmeans logical.
+#' @param kmeans logical. If TRUE, initialize parameters with k-means method.
+#'          You should set TRUE for non-time series data. Default FALSE.
 #' @param m0 a numeric vector. Location parameter of Gauss-Laplace prior.
-#'          Keep default if no prior information is available.
+#'          Keep default if no prior information is available. Default 0.
 #' @param lambda0 double. Coefficient for scale parameter of Gauss-Laplace
-#'          prior. Keep default if no prior information is available.
+#'          prior. Keep default if no prior information is available. Default 1.
 #' @param alpha double. Concentration parameter of Dirichlet prior.
-#'          Keep default if no prior information is available.
+#'          Keep default if no prior information is available. Default 1.
 #' @param pi_threshold double. Threshold to decide a number of states.
 #'          If pi < pi_threshold, the states are rejected in the sense of
 #'          sparse estimation.
