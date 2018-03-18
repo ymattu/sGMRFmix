@@ -1,16 +1,19 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-# Sparse Gaussian MRF Mixtures for Anomaly Detection
+Sparse Gaussian MRF Mixtures for Anomaly Detection
+==================================================
 
 #### *Koji Makiyama (@hoxo\_m)*
 
 [![Travis-CI Build
 Status](https://travis-ci.org/hoxo-m/sGMRFmix.svg?branch=master)](https://travis-ci.org/hoxo-m/sGMRFmix)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/sGMRFmix)](https://cran.r-project.org/package=sGMRFmix)
-<http://cranlogs.r-pkg.org/badges/sGMRFmix> [![Coverage
+[![CRAN
+Downloads](http://cranlogs.r-pkg.org/badges/sGMRFmix)](http://cranlogs.r-pkg.org/badges/sGMRFmix)
+[![Coverage
 Status](https://img.shields.io/coveralls/hoxo-m/sGMRFmix.svg)](https://coveralls.io/r/hoxo-m/sGMRFmix?branch=master)
 
-## 1 Overview
+1 Overview
+----------
 
 The **sGMRFmix** package provides an implementation of the algorithm
 presented by Ide et al. (2016). It is a novel anomaly detection method
@@ -28,7 +31,7 @@ train_data <- generate_train_data()
 plot_multivariate_data(train_data)
 ```
 
-![](README-images/unnamed-chunk-2-1.png)<!-- -->
+![](README-images/unnamed-chunk-2-1.png)
 
 Second, we prepare a multivariate test data that contains some anomaly
 values. Here we generate a data that consists of 500 normal observations
@@ -41,7 +44,7 @@ test_data <- generate_test_data()
 plot_multivariate_data(test_data)
 ```
 
-![](README-images/unnamed-chunk-3-1.png)<!-- -->
+![](README-images/unnamed-chunk-3-1.png)
 
 We input the training data to the `sGMRFmix()` function to learn the two
 operational modes. Then we compute variable-wise anomaly scores for test
@@ -53,13 +56,14 @@ anomaly_score <- compute_anomaly_score(fit, test_data)
 plot_multivariate_data(anomaly_score, fix_scale = TRUE) + ylim(NA, 50)
 ```
 
-![](README-images/unnamed-chunk-4-1.png)<!-- -->
+![](README-images/unnamed-chunk-4-1.png)
 
 You can see that high anomaly scores appear in the latter part of the
 test data. And you can also see the variable `x5` has no high anomaly
 scores.
 
-## 2 Installation
+2 Installation
+--------------
 
 You can install the **sGMRFmix** package from CRAN.
 
@@ -67,8 +71,7 @@ You can install the **sGMRFmix** package from CRAN.
 install.packages("sGMRFmix")
 ```
 
-You can also install the package from
-GitHub.
+You can also install the package from GitHub.
 
 ``` r
 install.packages("devtools") # if you have not installed "devtools" package
@@ -79,16 +82,15 @@ The source code for **sGMRFmix** package is available on GitHub at
 
 <https://github.com/hoxo-m/sGMRFmix>.
 
-## 3 Details
+3 Details
+---------
 
 ### 3.1 Basics
 
 The **sGMRFmix** package mainly provides two functions as follows:
 
-  - `sGMRFmix` to fit the model and
-  - `compute_anomaly_score` to compute anomaly scores.
-
-<!-- end list -->
+-   `sGMRFmix` to fit the model and
+-   `compute_anomaly_score` to compute anomaly scores.
 
 ``` r
 library(sGMRFmix)
@@ -99,8 +101,8 @@ anomaly_score <- compute_anomaly_score(fit, test_data)
 
 There are two hyperparameters as below.
 
-  - `K` is a max number of mixture components.
-  - `rho` is a constant that multiplies to the penalty term in the
+-   `K` is a max number of mixture components.
+-   `rho` is a constant that multiplies to the penalty term in the
     model.
 
 You only need to set `K` a large enough number because the algorithm
@@ -114,8 +116,8 @@ maximize the performance of anomaly detection.
 
 To fit the model, you must prepare two kinds of data as follows:
 
-  - Training data without anomalies to fit the model and
-  - Labeled test data that contains anomalies to tuning the
+-   Training data without anomalies to fit the model and
+-   Labeled test data that contains anomalies to tuning the
     hyperparameter `rho`.
 
 The package provides several functions to generate synthetic data.
@@ -157,13 +159,13 @@ Also, the package provides a function to visualize these data.
 plot_multivariate_data(train_data)
 ```
 
-![](README-images/unnamed-chunk-6-1.png)<!-- -->
+![](README-images/unnamed-chunk-6-1.png)
 
 ``` r
 plot_multivariate_data(test_data, label = test_labels)
 ```
 
-![](README-images/unnamed-chunk-7-1.png)<!-- -->
+![](README-images/unnamed-chunk-7-1.png)
 
 ### 3.3 Fitting Model
 
@@ -232,7 +234,7 @@ ggplot(df, aes(rho, auc)) + geom_point() +
   stat_summary(fun.y = mean, geom = "line", color = "red") + scale_x_log10()
 ```
 
-![](README-images/unnamed-chunk-10-1.png)<!-- -->
+![](README-images/unnamed-chunk-10-1.png)
 
 ``` r
 library(dplyr)
@@ -285,7 +287,7 @@ ggplot(df, aes(cutoff, f_measure)) + geom_point() +
   stat_summary(fun.y = mean, geom = "line", color = "red") + scale_x_log10()
 ```
 
-![](README-images/unnamed-chunk-13-1.png)<!-- -->
+![](README-images/unnamed-chunk-13-1.png)
 
 ``` r
 df %>% group_by(cutoff) %>% 
@@ -307,7 +309,7 @@ is_anomaly <- anomaly_scores > 1.71
 plot_multivariate_data(test_data, label = is_anomaly)
 ```
 
-![](README-images/unnamed-chunk-15-1.png)<!-- -->
+![](README-images/unnamed-chunk-15-1.png)
 
 ### 3.6 Moving Average of Anomaly Scores
 
@@ -339,7 +341,7 @@ ggplot(df, aes(cutoff, f_measure)) + geom_point() +
   stat_summary(fun.y = mean, geom = "line", color = "red") + scale_x_log10()
 ```
 
-![](README-images/unnamed-chunk-17-1.png)<!-- -->
+![](README-images/unnamed-chunk-17-1.png)
 
 ``` r
 df %>% group_by(cutoff) %>% 
@@ -357,7 +359,7 @@ is_anomaly <- anomaly_scores > 2.60
 plot_multivariate_data(test_data, label = is_anomaly)
 ```
 
-![](README-images/unnamed-chunk-19-1.png)<!-- -->
+![](README-images/unnamed-chunk-19-1.png)
 
 You can see that we obtained an anomaly detector with high performance.
 
@@ -388,7 +390,7 @@ head(fit$mode, 10)
 plot_multivariate_data(train_data, label = fit$mode, guide_title = "Mode")
 ```
 
-![](README-images/unnamed-chunk-22-1.png)<!-- -->
+![](README-images/unnamed-chunk-22-1.png)
 
 Using it, you can see the correlation structure for each mode.
 
@@ -431,8 +433,9 @@ pairs(estimated_anomaly, main="Estimated Anomaly Structure")
 
 <img src="README-images/unnamed-chunk-25-1.png" width="45%" /><img src="README-images/unnamed-chunk-25-2.png" width="45%" />
 
-## Reference
+Reference
+---------
 
-  - T. Ide, A .Khandelwal, J .Kalagnanam, **Sparse Gaussian Markov
+-   T. Ide, A .Khandelwal, J .Kalagnanam, **Sparse Gaussian Markov
     Random Field Mixtures for Anomaly Detection**, IEEE 16th
     International Conference on Data Mining (ICDM), 2016, pp 955–960
