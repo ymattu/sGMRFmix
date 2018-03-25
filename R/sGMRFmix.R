@@ -80,5 +80,5 @@ compute_mode <- function(x, m, A) {
     sigma <- to_symmetric(solve(A[[k]]))
     dmvnorm(x, mean = m[[k]], sigma = sigma, log = TRUE)
   }))
-  apply(mat, 1, which.max)
+  unname(apply(mat, 1, which.max))
 }
