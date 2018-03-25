@@ -386,7 +386,7 @@ the assigned mode to each observation in the training data.
 
 ``` r
 head(fit$mode, 10)
-#>  [1] 2 1 1 1 1 1 1 2 1 1
+#>  [1] 1 1 1 1 1 1 1 1 1 1
 plot_multivariate_data(train_data, label = fit$mode, guide_title = "Mode")
 ```
 
